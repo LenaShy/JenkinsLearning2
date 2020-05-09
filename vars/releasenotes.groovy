@@ -9,9 +9,9 @@ def call(Map config=[:]) {
   
   println dir
   
-  //def date = new Date()
-  //def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
-  //echo "Date and Time IS: " + sdf.format(date)
+  def date = new Date()
+  def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+  echo "Date and Time IS: " + sdf.format(date)
   
   if (config.changes != "false") {
     echo "changes"
