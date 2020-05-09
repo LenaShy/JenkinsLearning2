@@ -4,7 +4,6 @@ node {
   }
   stage('Build') {
     echo 'Building...'
-    releasenotes()
   }
   stage('Test') {
     echo 'Testing...'
