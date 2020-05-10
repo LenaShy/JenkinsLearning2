@@ -14,19 +14,17 @@ def call(Map config=[:]) {
   
   //echo "Build Number is: $(BUILD_NUMBER)" do not work dffghhj
   
-  def changeLogSets = currentBuild.changeSets;
-  
-  for(change in changeLogSets) {
-    def entries = change.items
-    for(entry in entries) {
-      echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
-      for (file in entry.affectedFiles) {
-        echo "${file.editType.name} ${file.path}"
-      }
-    }
-  }
+  def changeLogSets = currentBuild.changeSets
   
   if (config.changes != "false") {
-    echo "changes"
+    for(change in changeLogSets) {
+      def entries = change.items
+      for(entry in entries) {
+        echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
+        for (file in entry.affectedFiles) {
+          echo "${file.editType.name} ${file.path}"
+        }
+      }
+    }
   }
 }
